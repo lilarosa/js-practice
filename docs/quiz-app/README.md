@@ -12,7 +12,7 @@ hover change the button color
 
 ## link for 
 click to 
-[http://lilarosa.github.io/quiz-app/](http://lilarosa.github.io/quiz-app/)
+[http://lilarosa.github.io/quiz-app/](http://lilarosa.github.io/guess-number/)
 
 -----
 
