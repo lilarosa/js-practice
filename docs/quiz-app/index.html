@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <h1 id="quizName">True or False?</h1>
+        <div class="questionCard">
+            <p id="question">Welcome to the game!</p>
+        </div>
+        <div id="answers">
+            <button id="true" onclick="trueButton();">True</button>
+            <span>or</span>
+            <button id="false" onclick="falseButton();">False</button>
+        </div>
+        <div id="scoreBox">
+            <span id="scoreLabel">Score:</span>
+            <span id="points">0</span>
+        </div>
+        <div class="wrongList">
+            <!-- <ul id="wrongList">Wrong Collection</ul> -->
+             <table id="errorTable" border="1">
+                <tr id="th">
+                    <td>Question</th>
+                    <td>Answer</th>
+                </tr>
+                
+             </table>
+        </div>
+    </body>
+</html>
