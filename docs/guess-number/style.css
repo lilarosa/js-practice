@@ -1,0 +1,21 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+input,button {
+    font-size: 1rem;
+    padding: 10px;
+    margin: 10px;
+
+}
+
+input{
+    width: 150px;
+}
+
+#feedback{
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}

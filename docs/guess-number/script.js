@@ -7,38 +7,40 @@ const submitBtn=document.getElementById("submitBtn");
 const restartBtn=document.getElementById("restartBtn");
 const feedback=document.getElementById("feedback");
 const guessHistorySpan=document.getElementById("guessHistory");
+const guessesLeftSpan=document.getElementById("guessLeft");
 
-submitBtn.addEventListener("click",(){
+submitBtn.addEventListener("click",function(){
     const guess= Number(input.value);
     if (!guess || guess<1 ||guess>100) {
         feedback.textContent="Please enter a valid number between 1 and 100.";
-        return;
+        return;  
     }
 
     guessHistory.push(guess);
-    guessesLeft--;
+    guessesLeft=guessesLeft-1;
 
     guessHistorySpan.textContent=guessHistory.join(",");
-    guessesLeft.textContent=guessesLeft;
+    guessesLeftSpan.textContent=guessesLeft;
 
     if (guess=== secretNumber){
         feedback.textContent="Congratulations! You guessed the correct number!";
         endGame();
     }
     else if (guessesLeft===0){
-        feedback.textContent="Game over! The number was ${secretNumber}.";
+        feedback.textContent=`Game over! The number was ${secretNumber}.`;
         endGame();
     }
     else if(guess<secretNumber){
         feedback.textContent="Too low!";
     }
     else{
-        feedback.textContent="Too high!":
+        feedback.textContent="Too high!";
     }
     input.value="";
 });
 
-restartBtn.addEventListener("click",(){
+
+restartBtn.addEventListener("click",function(){
     secretNumber=Math.floor(Math.random()*100)+1;
     guessesLeft=10;
     guessHistory=[];
