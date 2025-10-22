@@ -1,0 +1,68 @@
+/* 🇩🇪 Einfaches CSS-Design für das Zahlenspiel */
+/* 🇨🇳 简洁风格的猜数字游戏界面 */
+/* 🇬🇧 Simple style for number guessing game */
+
+body {
+  background: linear-gradient(135deg, #74b9ff, #a29bfe);
+  font-family: "Segoe UI", Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  color: #fff;
+}
+
+.container {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+h1 {
+  margin-bottom: 15px;
+}
+
+.game {
+  margin: 20px 0;
+}
+
+input {
+  padding: 8px;
+  width: 150px;
+  border-radius: 8px;
+  border: none;
+  text-align: center;
+}
+
+button {
+  padding: 8px 15px;
+  margin-left: 8px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#checkBtn {
+  background-color: #0984e3;
+  color: white;
+}
+
+#resetBtn {
+  background-color: #00cec9;
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+#message {
+  font-size: 1.2em;
+  margin-top: 15px;
+}
