@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Whack-a-Mole | 打地鼠 | Maulwurfspiel</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="wrap">
+    <h1>🐹 Whack-a-Mole</h1>
+    <p class="lang">
+      🇩🇪 Klicke den Maulwurf, bevor er verschwindet！60s Spielzeit。<br>
+      🇨🇳 在 60 秒内尽量击中出现的地鼠。<br>
+      🇬🇧 Hit the mole as many times as you can in 60s.
+    </p>
+
+    <div class="hud">
+      <div>⏱️ <span id="time">60</span>s</div>
+      <div>🎯 Score: <span id="score">0</span></div>
+      <button id="startBtn">Start</button>
+    </div>
+
+    <div class="board" id="board" aria-label="game board"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
