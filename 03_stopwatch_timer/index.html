@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stopwatch / Timer | 秒表 / 倒计时 | Stoppuhr / Timer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>⏱️ Stopwatch / Timer</h1>
+    <p class="lang">
+      🇩🇪 Modus wählen: <strong>Stoppuhr</strong> oder <strong>Timer</strong>.<br>
+      🇨🇳 选择模式：<strong>秒表</strong> 或 <strong>倒计时</strong>。<br>
+      🇬🇧 Choose mode: <strong>Stopwatch</strong> or <strong>Timer</strong>.
+    </p>
+
+    <div class="mode-toggle" role="tablist" aria-label="Mode switch">
+      <button id="btnStopwatch" class="active" aria-selected="true">Stopwatch</button>
+      <button id="btnTimer" aria-selected="false">Timer</button>
+    </div>
+
+    <!-- Display -->
+    <div class="display" aria-live="polite">
+      <span id="hh">00</span>:<span id="mm">00</span>:<span id="ss">00</span>.<span id="ms">00</span>
+    </div>
+
+    <!-- Timer input -->
+    <div id="timerInputs" class="inputs hidden">
+      <label>
+        <span>Min:</span>
+        <input type="number" id="inputMin" min="0" max="999" value="1" />
+      </label>
+      <label>
+        <span>Sec:</span>
+        <input type="number" id="inputSec" min="0" max="59" value="0" />
+      </label>
+      <button id="applyTimer">Apply</button>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button id="startPause">Start</button>
+      <button id="reset" class="secondary">Reset</button>
+      <button id="lap" class="secondary">Lap</button>
+    </div>
+
+    <!-- Laps -->
+    <ul id="laps" class="laps"></ul>
+
+    <!-- Beep (倒计时结束提示音 / Signalton) -->
+    <audio id="beep" preload="auto">
+      <source src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABYAAAAA//8AAP//AACAgICA" type="audio/wav" />
+    </audio>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
