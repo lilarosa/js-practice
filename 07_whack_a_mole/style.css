@@ -1,0 +1,30 @@
+/* 🇩🇪 Einfaches Whack-a-Mole
+   🇨🇳 简洁打地鼠
+   🇬🇧 Simple whack-a-mole */
+
+:root{--bg:#0f172a;--panel:#0b1220;--border:#1f2937;--text:#e5e7eb;--accent:#60a5fa;--hit:#22c55e}
+*{box-sizing:border-box} body{
+  margin:0;min-height:100vh;display:grid;place-items:center;
+  background:linear-gradient(135deg,#1f2937,#0f172a);color:var(--text);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+.wrap{width:min(92vw,520px)}
+h1{margin:0 0 8px}.lang{opacity:.8;margin:0 0 12px}
+.hud{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.hud button{padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:#113454;color:#fff;cursor:pointer}
+
+.board{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+}
+.hole{
+  position:relative;height:120px;background:var(--panel);border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;
+}
+.mole{
+  position:absolute;left:50%;bottom:-100px;transform:translateX(-50%);
+  width:72px;height:72px;border-radius:50%;
+  background: radial-gradient(circle at 30% 30%, #eab308, #ca8a04);
+  box-shadow:0 6px 0 #1f2937;transition:bottom .15s ease;
+}
+.mole.up{bottom:16px}
+.mole.hit{background:radial-gradient(circle at 30% 30%, #22c55e, #16a34a)}
