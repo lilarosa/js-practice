@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List | Aufgabenliste | 待办清单</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🗒️ To-Do List</h1>
+    <p class="lang">
+      🇩🇪 Füge Aufgaben hinzu und markiere sie als erledigt.<br>
+      🇨🇳 添加任务，并标记完成状态。<br>
+      🇬🇧 Add tasks and mark them as completed.
+    </p>
+
+    <div class="input-group">
+      <input type="text" id="taskInput" placeholder="Enter a new task...">
+      <button id="addBtn">Add</button>
+    </div>
+
+    <ul id="taskList"></ul>
+
+    <button id="clearBtn" class="hidden">Clear All</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
