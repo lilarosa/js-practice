@@ -1,6 +1,6 @@
 # ⚡ JavaScript Practice · Demo Hub
 
-[![🌐 View Demo / 在线演示 / Live Vorschau](https://img.shields.io/badge/🌐_View_Demo-blue?style=for-the-badge)](https://lilarosa.github.io/js-practice/)
+[![🌐 View Demo / 在线演示 / Live Vorschau](https://img.shields.io/badge/🌐_View_Demo-blue?style=for-the-badge)](https://lilarosa.github.io/javaScript-practice/)
 
 ---
 
@@ -11,7 +11,7 @@ All projects are built with **HTML, CSS, and vanilla JavaScript**, fully respons
 
 > 💡 Each project is available online through **GitHub Pages**.  
 > Click the blue button above or visit:  
-> 👉 https://lilarosa.github.io/js-practice/
+> 👉 https://lilarosa.github.io/javaScript-practice/
 
 ### 🔹 Project List
 | # | Project | Description | Core Concepts |
@@ -33,7 +33,7 @@ Eine Sammlung von **interaktiven JavaScript-Mini-Projekten**, ideal zum Üben un
 Alle Projekte sind mit **HTML, CSS und reinem JavaScript** erstellt, vollständig responsiv und tastaturfreundlich.
 
 > 💡 Alle Projekte sind online über **GitHub Pages** verfügbar:  
-> 👉 https://lilarosa.github.io/js-practice/
+> 👉 https://lilarosa.github.io/javaScript-practice/
 
 ### 🔹 Projektliste
 | Nr. | Projekt | Beschreibung | Kernkonzepte |
@@ -55,7 +55,7 @@ Alle Projekte sind mit **HTML, CSS und reinem JavaScript** erstellt, vollständi
 所有项目均使用 **HTML、CSS 与原生 JavaScript** 编写，支持响应式设计与键盘操作。
 
 > 💡 所有项目可在线访问（GitHub Pages 托管）：  
-> 👉 https://lilarosa.github.io/js-practice/
+> 👉 https://lilarosa.github.io/javaScript-practice/
 
 ### 🔹 项目清单
 | 编号 | 项目 | 简介 | 核心概念 |
@@ -81,7 +81,7 @@ Alle Projekte sind mit **HTML, CSS und reinem JavaScript** erstellt, vollständi
 
 ### 📍 Repository Info
 - **Website / Live Demo:** https://lilarosa.github.io/js-practice/  
-- **Repository:** https://github.com/lilarosa/js-practice  
+- **Repository:** https://github.com/lilarosa/javaScript-practice/ 
 - **Author:** Tao  
 
 > 🧩 Responsive, multilingual, and built with pure JavaScript – ideal for study, showcase, or teaching use.
