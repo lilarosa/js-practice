@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Survey System | 问卷系统 | Umfragesystem</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <h1>📝 Mini Survey</h1>
+    <p class="lang">
+      🇩🇪 Beantworte die Fragen und sieh sofort die Auswertung（本地处理，无后台）.<br>
+      🇨🇳 回答问题并立刻看到统计结果（前端本地处理，无服务器）。<br>
+      🇬🇧 Answer questions and see instant results (no backend).
+    </p>
+
+    <form id="survey" novalidate>
+      <fieldset>
+        <legend>1) Your preferred JS area?</legend>
+        <label><input type="radio" name="area" value="frontend" required/> Frontend</label>
+        <label><input type="radio" name="area" value="backend"/> Backend</label>
+        <label><input type="radio" name="area" value="fullstack"/> Full-stack</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>2) Which tools do you use weekly?（多选）</legend>
+        <label><input type="checkbox" name="tools" value="vscode"/> VS Code</label>
+        <label><input type="checkbox" name="tools" value="git"/> Git</label>
+        <label><input type="checkbox" name="tools" value="browserdevtools"/> Browser DevTools</label>
+        <label><input type="checkbox" name="tools" value="node"/> Node.js</label>
+      </fieldset>
+
+      <label class="field">
+        <span>3) Any comment?</span>
+        <textarea name="comment" rows="3" placeholder="Optional"></textarea>
+      </label>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <section id="results" class="results hidden" aria-live="polite">
+      <h2>📊 Results</h2>
+      <div id="summary"></div>
+      <canvas id="chart" width="420" height="220" aria-label="chart"></canvas>
+      <p class="hint">Data stored in localStorage (no server).</p>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
