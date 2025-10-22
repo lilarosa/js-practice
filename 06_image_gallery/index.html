@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Gallery | 图片库 | Bildergalerie</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>🖼️ Image Gallery</h1>
+    <p class="lang">
+      🇩🇪 Klick auf ein Vorschaubild, öffnet Lightbox – Pfeiltasten navigieren.<br>
+      🇨🇳 点击缩略图打开大图，支持键盘左右键切换。<br>
+      🇬🇧 Click a thumbnail to open lightbox; use arrow keys to navigate.
+    </p>
+  </header>
+
+  <!-- 🇬🇧 Thumbnails grid -->
+  <main class="grid" id="grid"></main>
+
+  <!-- 🇬🇧 Lightbox modal -->
+  <div id="lightbox" class="lightbox hidden" aria-hidden="true">
+    <button class="close" id="lbClose" aria-label="Close">✖</button>
+    <button class="nav prev" id="lbPrev" aria-label="Previous">‹</button>
+    <img id="lbImg" alt="Preview"/>
+    <button class="nav next" id="lbNext" aria-label="Next">›</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
