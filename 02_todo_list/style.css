@@ -1,0 +1,82 @@
+/* 🇩🇪 Minimalistisches Design für Aufgabenliste */
+/* 🇨🇳 简洁风格的待办清单界面 */
+/* 🇬🇧 Minimalist style for to-do list */
+
+body {
+  background: linear-gradient(135deg, #ff9ff3, #feca57);
+  font-family: "Segoe UI", Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  color: #333;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  padding: 30px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 15px;
+}
+
+.input-group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px 0 0 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  background-color: #00a8ff;
+  color: white;
+  font-weight: bold;
+}
+
+#clearBtn {
+  margin-top: 15px;
+  background-color: #ff6b6b;
+  border-radius: 8px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  background: #f1f2f6;
+  margin: 8px 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.hidden {
+  display: none;
+}
