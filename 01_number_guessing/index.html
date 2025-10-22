@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Guessing Game | Zahlenratespiel | 猜数字游戏</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🎯 Number Guessing Game</h1>
+    <p class="lang">
+      🇩🇪 Errate eine Zahl zwischen 1 und 100.<br>
+      🇨🇳 猜一个 1 到 100 之间的数字。<br>
+      🇬🇧 Guess a number between 1 and 100.
+    </p>
+
+    <div class="game">
+      <input type="number" id="guessInput" placeholder="Enter your guess...">
+      <button id="checkBtn">Check</button>
+    </div>
+
+    <p id="message">Start guessing!</p>
+    <p id="score">Attempts left: <span id="attempts">10</span></p>
+
+    <button id="resetBtn" class="hidden">Play Again</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
