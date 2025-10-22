@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Form Validator | 表单验证 | Formular-Validierung</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>✅ Form Validator</h1>
+    <p class="lang">
+      🇩🇪 Live-Validierung für E-Mail & Passwort, inkl. Stärkeanzeige und AGB-Checkbox.<br>
+      🇨🇳 实时验证邮箱、密码强度与确认密码，勾选同意条款后才能提交。<br>
+      🇬🇧 Live validation for email & password with strength meter and terms checkbox.
+    </p>
+
+    <form id="signupForm" novalidate>
+      <!-- Email -->
+      <label class="field">
+        <span>Email</span>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        <small class="hint">Must be a valid email address.</small>
+        <small class="error" aria-live="polite"></small>
+      </label>
+
+      <!-- Password -->
+      <label class="field">
+        <span>Password</span>
+        <input id="password" name="password" type="password" placeholder="At least 8 chars" required />
+        <div class="meter" aria-hidden="true"><div id="meterFill"></div></div>
+        <ul class="rules">
+          <li id="rLen">≥ 8 chars</li>
+          <li id="rUpper">Uppercase</li>
+          <li id="rLower">Lowercase</li>
+          <li id="rDigit">Digit</li>
+          <li id="rSpecial">Special (!@#$...)</li>
+        </ul>
+        <small class="error" aria-live="polite"></small>
+      </label>
+
+      <!-- Confirm -->
+      <label class="field">
+        <span>Confirm Password</span>
+        <input id="confirm" name="confirm" type="password" placeholder="Repeat password" required />
+        <small class="error" aria-live="polite"></small>
+      </label>
+
+      <!-- Terms -->
+      <label class="check">
+        <input id="terms" type="checkbox" />
+        <span>
+          I agree to the <a href="#" onclick="return false;">Terms</a>
+          / Ich stimme zu / 我已阅读并同意
+        </span>
+      </label>
+
+      <button id="submitBtn" type="submit" disabled>Create Account</button>
+      <p id="result" class="result" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
