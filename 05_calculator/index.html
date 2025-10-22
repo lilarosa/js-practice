@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculator | 计算器 | Taschenrechner</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="wrap">
+    <h1>🧮 Calculator</h1>
+    <p class="lang">
+      🇩🇪 Einfache Grundrechenarten (+ − × ÷), AC/C, ⌫, Prozent, Dezimalpunkt, Tastatur支持。<br/>
+      🇨🇳 支持加减乘除、清除、退格、百分比与小数点；可用键盘输入。<br/>
+      🇬🇧 Supports + − × ÷, AC/C, backspace, percent, decimal; keyboard-friendly.
+    </p>
+
+    <div class="calc" role="application" aria-label="Calculator">
+      <div id="display" class="display" aria-live="polite">0</div>
+      <div class="keys">
+        <!-- Row 1 -->
+        <button data-act="ac" class="muted">AC</button>
+        <button data-act="clear" class="muted">C</button>
+        <button data-act="back" class="muted">⌫</button>
+        <button data-op="/" class="op">÷</button>
+
+        <!-- Row 2 -->
+        <button data-num="7">7</button>
+        <button data-num="8">8</button>
+        <button data-num="9">9</button>
+        <button data-op="*" class="op">×</button>
+
+        <!-- Row 3 -->
+        <button data-num="4">4</button>
+        <button data-num="5">5</button>
+        <button data-num="6">6</button>
+        <button data-op="-" class="op">−</button>
+
+        <!-- Row 4 -->
+        <button data-num="1">1</button>
+        <button data-num="2">2</button>
+        <button data-num="3">3</button>
+        <button data-op="+" class="op">+</button>
+
+        <!-- Row 5 -->
+        <button data-act="neg">±</button>
+        <button data-num="0">0</button>
+        <button data-act="dot">.</button>
+        <button data-act="eq" class="primary">=</button>
+      </div>
+
+      <div class="extras">
+        <button data-act="percent" class="ghost">%</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
