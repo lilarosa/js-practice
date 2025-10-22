@@ -22,3 +22,30 @@
 ---
 
 ## 🧱 Folder Structure / 目录结构 / Struktur
+js-practice/
+├── 01_number_guessing/
+├── 02_todo_list/
+├── 03_stopwatch_timer/
+├── 04_form_validator/
+├── 05_calculator/
+├── 06_image_gallery/
+├── 07_whack_a_mole/
+├── 08_survey_system/
+└── README.md
+
+---
+
+## 🧩 Technologies / 技术栈 / Technologien
+- HTML5 / CSS3 / Vanilla JavaScript  
+- DOM Manipulation & Events  
+- Local Storage & JSON  
+- ES6 Syntax (let/const, arrow functions)
+
+---
+
+## 📆 Progress / 进度
+| Date | Project | Status |
+|------|----------|--------|
+| 2025-10-22 | Repository restructured | ✅ |
+| 2025-10-23 | Add Number Guessing Game | 🚀 |
+| 2025-10-24+ | Add more mini-apps | 🧩 |
