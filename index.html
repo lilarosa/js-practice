@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JS Practice · Demo Hub</title>
+  <meta name="description" content="JavaScript practice projects: DOM, Events, localStorage, Canvas, Games." />
+  <style>
+    :root{
+      --bg:#0f172a; --panel:#0b1220; --border:#1f2937; --muted:#94a3b8; --txt:#e5e7eb;
+      --card:#111827; --acc:#60a5fa; --ok:#22c55e; --warn:#ef4444;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:linear-gradient(135deg,#1f2937,#0f172a); color:var(--txt);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "PingFang SC","Hiragino Sans GB","Microsoft Yahei", sans-serif;
+    }
+    header{max-width:1100px;margin:24px auto 12px;padding:0 16px}
+    h1{margin:0 0 6px;font-size: clamp(22px,4vw,34px)}
+    .sub{margin:0;color:var(--muted)}
+    .toolbar{
+      margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    }
+    .search{
+      flex:1 1 240px; display:flex; align-items:center; gap:8px; background:var(--panel);
+      border:1px solid var(--border); border-radius:12px; padding:8px 12px;
+    }
+    .search input{
+      flex:1; background:transparent; border:none; outline:none; color:var(--txt);
+      font-size:16px;
+    }
+    .lang{
+      display:flex; gap:8px; align-items:center;
+      background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:6px;
+    }
+    .lang button{
+      background:transparent; border:1px solid transparent; color:var(--txt);
+      padding:8px 10px; border-radius:10px; cursor:pointer; font-weight:600;
+    }
+    .lang button.active{ border-color: var(--acc); outline:2px solid rgba(96,165,250,.25) }
+
+    main{max-width:1100px;margin:12px auto 40px;padding:0 16px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+    .card{
+      display:block; text-decoration:none; color:inherit; background:var(--card);
+      border:1px solid var(--border); border-radius:16px; padding:14px;
+      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+      min-height: 140px;
+    }
+    .card:hover{ transform: translateY(-2px); border-color: var(--acc); box-shadow:0 8px 24px rgba(0,0,0,.25) }
+    .card h3{margin:0 0 6px; font-size:18px}
+    .card p{margin:0 0 10px; color:var(--muted); min-height: 40px}
+    .tags{display:flex; gap:6px; flex-wrap:wrap}
+    .tag{font-size:12px; padding:3px 8px; background:#0b1220; border:1px solid var(--border); border-radius:999px}
+
+    footer{max-width:1100px;margin:0 auto 28px;padding:0 16px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+    .credit{opacity:.85}
+    .counter{background:var(--panel); border:1px dashed var(--border); padding:6px 10px; border-radius:10px}
+    .empty{opacity:.75; text-align:center; padding:30px 0}
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="title">⚡ JavaScript Practice · Demo Hub</h1>
+    <p class="sub" id="subtitle">Small interactive projects · DOM · Events · localStorage · Canvas</p>
+
+    <div class="toolbar">
+      <div class="search" role="search" aria-label="filter">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M21 21l-4.3-4.3m1.3-5A7 7 0 1 1 7 4a7 7 0 0 1 11 7.7z" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <input id="q" type="text" placeholder="Search by title / tag…  搜索标题或标签…  Suche nach Titel/Tag…" />
+      </div>
+
+      <div class="lang" role="tablist" aria-label="language switch">
+        <button id="lang-zh" class="active" aria-selected="true">中文</button>
+        <button id="lang-en" aria-selected="false">EN</button>
+        <button id="lang-de" aria-selected="false">DE</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div id="grid" class="grid" aria-live="polite"></div>
+    <div id="empty" class="empty" style="display:none;">未找到匹配项目 · No matches · Keine Treffer</div>
+  </main>
+
+  <footer>
+    <span class="credit">© Tao Wang — js-practice</span>
+    <span class="counter" id="count"></span>
+  </footer>
+
+  <script>
+    // —— i18n strings ——
+    const i18n = {
+      zh: {
+        title: "⚡ JavaScript 练习 · Demo Hub",
+        subtitle: "小型交互项目 · DOM · 事件 · 本地存储 · 画布",
+        cards: {
+          "01": { title:"🎯 01 · 猜数字", desc:"1–100 之间随机数，10 次机会，提示高/低。" },
+          "02": { title:"🗒️ 02 · 待办清单", desc:"添加/完成/删除，使用 localStorage 持久化。" },
+          "03": { title:"⏱️ 03 · 秒表 / 倒计时", desc:"两种模式切换，圈速记录，倒计时蜂鸣提示。" },
+          "04": { title:"✅ 04 · 表单验证", desc:"邮箱、密码强度、确认密码、同意条款后提交。" },
+          "05": { title:"🧮 05 · 计算器", desc:"加减乘除，AC/C，退格，百分比，小数，键盘输入。" },
+          "06": { title:"🖼️ 06 · 图片库", desc:"缩略图 + 弹窗预览（Lightbox），键盘左右切换。" },
+          "07": { title:"🐹 07 · 打地鼠", desc:"60 秒内尽量多击中出现的地鼠，计分统计。" },
+          "08": { title:"📝 08 · 问卷系统", desc:"前端本地统计与柱状图显示，无需后端。"}
+        }
+      },
+      en: {
+        title: "⚡ JavaScript Practice · Demo Hub",
+        subtitle: "Small interactive projects · DOM · Events · localStorage · Canvas",
+        cards: {
+          "01": { title:"🎯 01 · Number Guessing", desc:"Guess 1–100 with 10 attempts and feedback." },
+          "02": { title:"🗒️ 02 · To-Do List", desc:"Add / complete / delete tasks, persisted via localStorage." },
+          "03": { title:"⏱️ 03 · Stopwatch / Timer", desc:"Two modes, laps, countdown end beep." },
+          "04": { title:"✅ 04 · Form Validator", desc:"Email, password strength, confirm match, terms to enable submit." },
+          "05": { title:"🧮 05 · Calculator", desc:"+ − × ÷, AC/C, backspace, %, decimals, keyboard support." },
+          "06": { title:"🖼️ 06 · Image Gallery", desc:"Thumbnails with lightbox preview, arrow key navigation." },
+          "07": { title:"🐹 07 · Whack-a-Mole", desc:"Hit the mole as many times as possible in 60 seconds." },
+          "08": { title:"📝 08 · Survey System", desc:"Client-side results with a simple bar chart; no backend." }
+        }
+      },
+      de: {
+        title: "⚡ JavaScript-Übungen · Demo-Hub",
+        subtitle: "Kleine interaktive Projekte · DOM · Events · localStorage · Canvas",
+        cards: {
+          "01": { title:"🎯 01 · Zahlenraten", desc:"Zahl 1–100 erraten, 10 Versuche, Hinweise höher/niedriger." },
+          "02": { title:"🗒️ 02 · Aufgabenliste", desc:"Aufgaben hinzufügen/erledigen/löschen, per localStorage gespeichert." },
+          "03": { title:"⏱️ 03 · Stoppuhr / Timer", desc:"Zwei Modi, Rundenzeiten, Signalton am Ende." },
+          "04": { title:"✅ 04 · Formular-Validierung", desc:"E-Mail, Passwortstärke, Bestätigung, AGB zum Aktivieren." },
+          "05": { title:"🧮 05 · Taschenrechner", desc:"+ − × ÷, AC/C, Rücktaste, %, Dezimal, Tastaturbedienung." },
+          "06": { title:"🖼️ 06 · Bildergalerie", desc:"Thumbnails mit Lightbox-Vorschau, Pfeiltasten-Navigation." },
+          "07": { title:"🐹 07 · Maulwurfspiel", desc:"So viele Treffer wie möglich in 60 Sekunden." },
+          "08": { title:"📝 08 · Umfragesystem", desc:"Client-seitige Auswertung mit Balkendiagramm; kein Backend." }
+        }
+      }
+    };
+
+    // —— project data (add new items here in future) ——
+    const projects = [
+      { id:"01", href:"./01_number_guessing/", tags:["DOM","Events","Game"] },
+      { id:"02", href:"./02_todo_list/", tags:["localStorage","Array","DOM"] },
+      { id:"03", href:"./03_stopwatch_timer/", tags:["Timer","Interval","A11y"] },
+      { id:"04", href:"./04_form_validator/", tags:["Regex","Forms","UX"] },
+      { id:"05", href:"./05_calculator/", tags:["Logic","Keyboard","State"] },
+      { id:"06", href:"./06_image_gallery/", tags:["DOM","UX","Lightbox"] },
+      { id:"07", href:"./07_whack_a_mole/", tags:["Game","Events","Loop"] },
+      { id:"08", href:"./08_survey_system/", tags:["Forms","Canvas","Stats"] },
+    ];
+
+    // —— state ——
+    let lang = "zh";
+    const grid = document.getElementById("grid");
+    const empty = document.getElementById("empty");
+    const title = document.getElementById("title");
+    const subtitle = document.getElementById("subtitle");
+    const count = document.getElementById("count");
+    const q = document.getElementById("q");
+
+    // —— render ——
+    function renderCards(filter=""){
+      const dict = i18n[lang].cards;
+      const f = filter.trim().toLowerCase();
+      const list = projects.filter(p => {
+        const t = dict[p.id].title.toLowerCase();
+        const d = dict[p.id].desc.toLowerCase();
+        const tagStr = p.tags.join(" ").toLowerCase();
+        return !f || t.includes(f) || d.includes(f) || tagStr.includes(f);
+      });
+
+      grid.innerHTML = list.map(p => {
+        const c = dict[p.id];
+        const tags = p.tags.map(t => `<span class="tag">${t}</span>`).join("");
+        return `
+          <a class="card" href="${p.href}" aria-label="${c.title}">
+            <h3>${c.title}</h3>
+            <p>${c.desc}</p>
+            <div class="tags">${tags}</div>
+          </a>
+        `;
+      }).join("");
+
+      empty.style.display = list.length ? "none" : "block";
+      count.textContent = `${list.length} / ${projects.length} projects`;
+    }
+
+    function setLang(next){
+      lang = next;
+      // header text
+      title.textContent = i18n[lang].title;
+      subtitle.textContent = i18n[lang].subtitle;
+      // btn state
+      document.querySelectorAll(".lang button").forEach(b=>{
+        b.classList.toggle("active", b.id === "lang-"+lang);
+        b.setAttribute("aria-selected", b.id === "lang-"+lang ? "true" : "false");
+      });
+      renderCards(q.value);
+      // remember choice
+      localStorage.setItem("js_demo_lang", lang);
+    }
+
+    // —— events ——
+    document.getElementById("lang-zh").addEventListener("click", ()=>setLang("zh"));
+    document.getElementById("lang-en").addEventListener("click", ()=>setLang("en"));
+    document.getElementById("lang-de").addEventListener("click", ()=>setLang("de"));
+    q.addEventListener("input", ()=>renderCards(q.value));
+
+    // —— init ——
+    (function init(){
+      const saved = localStorage.getItem("js_demo_lang");
+      if (saved && i18n[saved]) lang = saved;
+      setLang(lang);
+      q.value = "";
+    })();
+  </script>
+</body>
+</html>
